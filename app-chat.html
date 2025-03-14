@@ -119,7 +119,6 @@
               href="javascript:void(0);"
               class="layout-menu-toggle menu-link text-large ms-auto"
             >
-              <i class="ti menu-toggle-icon d-none d-xl-block align-middle"></i>
               <i class="ti ti-x d-block d-xl-none ti-md align-middle"></i>
             </a>
           </div>
@@ -127,28 +126,212 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-            <!-- Dashboards -->
-            <li class="menu-item active open">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div>AI Platform</div>
+            <div class="menu-box">
+              <h2>Chatbot Guide</h2>
+              <div class="glass-box">
+                <p>Click on each section to see the guide.</p>
+              </div>
+            </div>
+            <div
+              id="circularMenu1"
+              class="circular-menu circular-menu-left active"
+            >
+              <a
+                class="floating-btn"
+                onclick="document.getElementById('circularMenu1').classList.toggle('active');"
+              >
+                <i class="fa fa-bars"></i>
               </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="index.php" class="menu-link">
-                    <div>Baran Project</div>
-                  </a>
-                </li>
-                <!-- Chat -->
-                <li class="menu-item active">
-                  <a href="app-chat.php" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-messages"></i>
-                    <div>Baran Assistant</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
+              <menu class="items-wrapper">
+                <a class="menu-item fa fa-home"></a>
+                <a class="menu-item fa fa-user"></a>
+                <a class="menu-item fa fa-pie-chart"></a>
+                <a class="menu-item fa fa-cog"></a>
+              </menu>
+            </div>
           </ul>
+
+          <script>
+            const helperText = [
+              " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto",
+              " cts, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful",
+              " possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiand",
+            ];
+            const itemsMenu = document.querySelectorAll(".menu-item");
+            const glassBox = document.querySelector(".glass-box");
+            itemsMenu.forEach((item, index) => {
+              item.addEventListener("click", () => {
+                glassBox.textContent = helperText[index];
+              });
+            });
+          </script>
+
+          <style>
+            .app-brand {
+              padding: 0.6rem;
+            }
+
+            .glass-box {
+              background: rgba(255, 255, 255, 0.2);
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(10px);
+              border-radius: 10px;
+              padding: 20px;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+              border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .menu-box {
+              padding: 1.2rem;
+              font-weight: bold;
+            }
+
+            .circular-menu {
+              position: fixed;
+              bottom: 1em;
+              right: 1em;
+            }
+
+            .circular-menu .floating-btn {
+              display: block;
+              width: 3.5em;
+              height: 3.5em;
+              border-radius: 50%;
+              background-color: hsl(4, 98%, 60%);
+              box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, 0.26);
+              color: hsl(0, 0%, 100%);
+              text-align: center;
+              line-height: 3.9;
+              cursor: pointer;
+              outline: 0;
+            }
+
+            .circular-menu.active .floating-btn {
+              box-shadow: inset 0 0 3px #0000004d;
+            }
+
+            .circular-menu .floating-btn:active {
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+            }
+
+            .circular-menu .floating-btn i {
+              font-size: 1.3em;
+              transition: transform 0.2s;
+            }
+
+            .circular-menu.active .floating-btn i {
+              transform: rotate(-45deg);
+            }
+
+            .circular-menu:after {
+              display: block;
+              content: " ";
+              width: 3.5em;
+              height: 3.5em;
+              border-radius: 50%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              z-index: -2;
+              background-color: hsl(4, 98%, 60%);
+              transition: all 0.3s ease;
+            }
+
+            .circular-menu.active:after {
+              transform: scale3d(5.5, 5.5, 1);
+              transition-timing-function: cubic-bezier(0.68, 1.55, 0.265, 1);
+            }
+
+            .circular-menu .items-wrapper {
+              padding: 0;
+              margin: 0;
+            }
+
+            .circular-menu .menu-item {
+              position: absolute;
+              top: 0.2em;
+              right: 0.2em;
+              z-index: -1;
+              display: block;
+              text-decoration: none;
+              color: hsl(0, 0%, 100%);
+              font-size: 1em;
+              width: 3em;
+              height: 3em;
+              border-radius: 50%;
+              text-align: center;
+              line-height: 3;
+              background-color: hsla(0, 0%, 0%, 0.1);
+              transition: transform 0.3s ease, background 0.2s ease;
+            }
+
+            .circular-menu .menu-item:hover {
+              background-color: hsla(0, 0%, 0%, 0.3);
+            }
+
+            .circular-menu.active .menu-item {
+              transition-timing-function: cubic-bezier(
+                0.175,
+                0.885,
+                0.32,
+                1.275
+              );
+            }
+
+            .items-wrapper a {
+              cursor: pointer;
+            }
+
+            .circular-menu.active .menu-item:nth-child(1) {
+              transform: translate3d(1em, -7em, 0);
+            }
+
+            .circular-menu.active .menu-item:nth-child(2) {
+              transform: translate3d(-3.5em, -6.3em, 0);
+            }
+
+            .circular-menu.active .menu-item:nth-child(3) {
+              transform: translate3d(-6.5em, -3.2em, 0);
+            }
+
+            .circular-menu.active .menu-item:nth-child(4) {
+              transform: translate3d(-7em, 1em, 0);
+            }
+
+            .circular-menu.circular-menu-left {
+              right: auto;
+              left: 1em;
+            }
+
+            .circular-menu.circular-menu-left .floating-btn {
+              background-color: #7367f0;
+            }
+
+            .circular-menu.circular-menu-left:after {
+              background-color: #7367f0;
+            }
+
+            .circular-menu.circular-menu-left.active .floating-btn i {
+              transform: rotate(90deg);
+            }
+
+            .circular-menu.circular-menu-left.active .menu-item:nth-child(1) {
+              transform: translate3d(-1em, -7em, 0);
+            }
+
+            .circular-menu.circular-menu-left.active .menu-item:nth-child(2) {
+              transform: translate3d(3.5em, -6.3em, 0);
+            }
+
+            .circular-menu.circular-menu-left.active .menu-item:nth-child(3) {
+              transform: translate3d(6.5em, -3.2em, 0);
+            }
+
+            .circular-menu.circular-menu-left.active .menu-item:nth-child(4) {
+              transform: translate3d(7em, 1em, 0);
+            }
+          </style>
         </aside>
 
         <!-- Layout container -->
@@ -169,26 +352,47 @@
                 <i class="ti ti-menu-2 ti-md"></i>
               </a>
             </div>
-
             <div
               class="navbar-nav-right d-flex align-items-center"
               id="navbar-collapse"
             >
-              <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item navbar-search-wrapper mb-0">
-                  <a
-                    class="nav-item nav-link search-toggler d-flex align-items-center px-0"
-                    href="javascript:void(0);"
+              <!--Navbar -->
+              <div class="container-xxl d-flex align-items-center">
+                <div class="navbar-menu">
+                  <ul
+                    class="navbar-nav d-flex flex-row align-items-center justify-content-center gap-4"
                   >
-                    <i class="ti ti-search ti-md me-2 me-lg-4 ti-lg"></i>
-                    <span class="d-none d-md-inline-block text-muted fw-normal"
-                      >Search (Ctrl+/)</span
-                    >
-                  </a>
+                    <li class="nav-item" role="button">
+                      <a
+                        class="d-flex align-items-center justify-content-center"
+                        href="index"
+                      >
+                        <i
+                          class="menu-icon tf-icons ti ti-file-analytics me-1"
+                        ></i>
+                        <span class="d-none d-md-inline">Report</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="d-flex align-items-center justify-content-center active"
+                        href="app-chat.html"
+                      >
+                        <i class="menu-icon tf-icons ti ti-message me-1"></i>
+                        <span class="d-none d-md-inline">Assistant</span>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <!-- /Search -->
+
+              <style>
+                .nav-item{
+                  cursor: pointer;
+                }
+              </style>
+
+              <!-- Navbar -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Language -->
@@ -203,9 +407,8 @@
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                       <a
-                        class="dropdown-item"
-                        href="javascript:void(0);"
-                        data-language="en"
+                        class="dropdown-item active"
+                        href="app-chat.html"
                         data-text-direction="ltr"
                       >
                         <span>English</span>
@@ -214,11 +417,10 @@
                     <li>
                       <a
                         class="dropdown-item"
-                        href="javascript:void(0);"
-                        data-language="fr"
-                        data-text-direction="ltr"
+                        href="./fa/app-chat.html"
+                        data-text-direction="rtl"
                       >
-                        <span>French</span>
+                        <span>Persian</span>
                       </a>
                     </li>
                     <li>
@@ -229,16 +431,6 @@
                         data-text-direction="rtl"
                       >
                         <span>Arabic</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="javascript:void(0);"
-                        data-language="de"
-                        data-text-direction="ltr"
-                      >
-                        <span>German</span>
                       </a>
                     </li>
                   </ul>
@@ -295,146 +487,9 @@
                 </li>
                 <!-- / Style Switcher-->
 
-                <!-- Quick links  -->
-                <li
-                  class="nav-item dropdown-shortcuts navbar-dropdown dropdown"
-                >
-                  <a
-                    class="nav-link btn btn-text-secondary btn-icon rounded-pill btn-icon dropdown-toggle hide-arrow"
-                    href="javascript:void(0);"
-                    data-bs-toggle="dropdown"
-                    data-bs-auto-close="outside"
-                    aria-expanded="false"
-                  >
-                    <i class="ti ti-layout-grid-add ti-md"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end p-0">
-                    <div class="dropdown-menu-header border-bottom">
-                      <div
-                        class="dropdown-header d-flex align-items-center py-3"
-                      >
-                        <h6 class="mb-0 me-auto">Shortcuts</h6>
-                        <a
-                          href="javascript:void(0)"
-                          class="btn btn-text-secondary rounded-pill btn-icon dropdown-shortcuts-add"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Add shortcuts"
-                          ><i class="ti ti-plus text-heading"></i
-                        ></a>
-                      </div>
-                    </div>
-                    <div class="dropdown-shortcuts-list scrollable-container">
-                      <div class="row row-bordered overflow-visible g-0">
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-calendar ti-26px text-heading"></i>
-                          </span>
-                          <a href="app-calendar.html" class="stretched-link"
-                            >Calendar</a
-                          >
-                          <small>Appointments</small>
-                        </div>
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i
-                              class="ti ti-file-dollar ti-26px text-heading"
-                            ></i>
-                          </span>
-                          <a href="app-invoice-list.html" class="stretched-link"
-                            >Invoice App</a
-                          >
-                          <small>Manage Accounts</small>
-                        </div>
-                      </div>
-                      <div class="row row-bordered overflow-visible g-0">
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-user ti-26px text-heading"></i>
-                          </span>
-                          <a href="app-user-list.html" class="stretched-link"
-                            >User App</a
-                          >
-                          <small>Manage Users</small>
-                        </div>
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-users ti-26px text-heading"></i>
-                          </span>
-                          <a href="app-access-roles.html" class="stretched-link"
-                            >Role Management</a
-                          >
-                          <small>Permission</small>
-                        </div>
-                      </div>
-                      <div class="row row-bordered overflow-visible g-0">
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i
-                              class="ti ti-device-desktop-analytics ti-26px text-heading"
-                            ></i>
-                          </span>
-                          <a href="index.html" class="stretched-link"
-                            >Dashboard</a
-                          >
-                          <small>User Dashboard</small>
-                        </div>
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-settings ti-26px text-heading"></i>
-                          </span>
-                          <a
-                            href="pages-account-settings-account.html"
-                            class="stretched-link"
-                            >Setting</a
-                          >
-                          <small>Account Settings</small>
-                        </div>
-                      </div>
-                      <div class="row row-bordered overflow-visible g-0">
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-help ti-26px text-heading"></i>
-                          </span>
-                          <a href="pages-faq.html" class="stretched-link"
-                            >FAQs</a
-                          >
-                          <small>FAQs & Articles</small>
-                        </div>
-                        <div class="dropdown-shortcuts-item col">
-                          <span
-                            class="dropdown-shortcuts-icon rounded-circle mb-3"
-                          >
-                            <i class="ti ti-square ti-26px text-heading"></i>
-                          </span>
-                          <a href="modal-examples.html" class="stretched-link"
-                            >Modals</a
-                          >
-                          <small>Useful Popups</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <!-- Quick links -->
-
                 <!-- Notification -->
                 <li
-                  class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2"
+                  class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2 d-none d-md-block"
                 >
                   <a
                     class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow"
@@ -960,6 +1015,23 @@
               animation-delay: -0.32s;
             }
 
+            .loader-text {
+              display: inline-block;
+              font-size: 14px;
+              font-weight: 300;
+              color: #acabc1;
+              animation: hoverText 1.5s infinite alternate ease-in-out;
+            }
+
+            @keyframes hoverText {
+              0% {
+                opacity: 0.3;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+
             @keyframes bounce {
               0%,
               80%,
@@ -1339,7 +1411,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                           class="d-flex justify-content-between align-items-center"
                         >
                           <div
-                            class="d-flex overflow-hidden align-items-center"
+                            class="d-flex overflow-hidden align-items-center agent-container"
                           >
                             <i
                               class="ti ti-menu-2 ti-lg cursor-pointer d-lg-none d-block me-4"
@@ -1406,7 +1478,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                   >Block Contact</a
                                 >
                                 <a
-                                  class="dropdown-item"
+                                  class="dropdown-item clear-chat-btn"
                                   href="javascript:void(0);"
                                   >Clear Chat</a
                                 >
@@ -1593,7 +1665,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
             <!-- / Content -->
 
             <!-- Footer -->
-            <?php include("footer.php");?>
+            <!-- <?php include("footer.php");?> -->
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -1630,8 +1702,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
     <script src="assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <script src="assets/vendor/libs/swiper/swiper.js"></script>
     <script src="assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="assets/js/chat-acctive-agent.js"></script>
-
+    <script src="assets/js/testing-chat.js"></script>
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
     <script type="text/javascript">
@@ -1639,28 +1710,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
         const currentTime = "<?php echo $currentTime; ?>";
         const currentUser = "<?php echo $rowuser['name']; ?>";
 
-        var jqXHR = null;
-
-        $("#submitBtn").on("click", function (e) {
-          e.preventDefault();
-          sendMessage();
-        });
-
-        $("#sendChat").on("keypress", function (e) {
-          if (e.which === 13) {
-            e.preventDefault();
-            sendMessage();
-          }
-        });
-
-        $("#stopBtn").on("click", function () {
-          if (jqXHR) {
-            jqXHR.abort();
-            hideLoader();
-            $(this).hide();
-            console.log("Request Abortet!");
-          }
-        });
+        let selectedAvatarSrc = "avatar-sara.jpg";
 
         function hideLoader() {
           $("#chats-list .loaderdiv").remove();
@@ -1671,20 +1721,63 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
           chatHistoryBody.scrollTo(0, chatHistoryBody.scrollHeight);
         }
 
+        // Default Message
+        const messagesMap = new Map([
+          ["Sara", "Hi, I am AI Manager Assistant."],
+          ["Arsalan", "Hi I'am AI Tasks Assistant"],
+          ["Romina", "Hi I'am AI Schedule Assistant"],
+          ["Moein", "Hi I'am AI Risks Assistant"],
+          ["Hossein", "Hi I'am AI Optimization Assistant"],
+        ]);
+
+        const showAgentMessage = (agentName) => {
+          const message = messagesMap.get(agentName) || "How Can I help You";
+
+          var chatMessage = $(`
+      <li class="chat-message">
+        <div class="d-flex overflow-hidden">
+          <div class="user-avatar flex-shrink-0 me-4 agent-container">
+            <div class="avatar avatar-sm agent-online ">
+              <img src="${selectedAvatarSrc}" style="width: 35px; height: 38px;" alt="Avatar" class="rounded-circle" />
+            </div>
+          </div>
+          <div class="chat-message-wrapper flex-grow-1">
+            <div class="chat-message-text mt-2">
+              <p class="mb-0"></p>
+            </div>
+            <div class="text-muted mt-1">
+              <small>${agentName}</small>
+            </div>
+          </div>
+        </div>
+      </li>`);
+
+          $("#chats-list").append(chatMessage);
+          scrollToBottom();
+
+          var messageElement = chatMessage.find(".chat-message-text p");
+          messageElement.css("white-space", "pre-wrap");
+
+          let lines = message.split("\n");
+          // lines[0] = `<strong>${lines[0]}</strong>`;
+
+          const formattedMessage = lines.join("\n");
+
+          typeWriter(messageElement, formattedMessage, 35);
+        };
+
         // Active Chat Agent
         const chatAgents = document.querySelectorAll(".chat-agent");
         const agentAvatars = document.querySelectorAll(".agent-online img");
         const displayName = document.querySelector(".agent-name h6");
         const displayUserStatus = document.querySelector(".agent-name small");
 
-        let selectedAvatarSrc = "avatar-sara.jpg";
-
         const nameMap = new Map([
-          ["Sara", "Ask Me About Everything"],
-          ["Arsalan", "Ask Me About Tasks"],
-          ["Romina", "Ask Me About Schedule"],
-          ["Moein", "Ask Me About Risks"],
-          ["Hossein", "Ask Me About Optimization"],
+          ["Sara", "AI Manager Assistant"],
+          ["Arsalan", "AI Tasks Assistant"],
+          ["Romina", "AI Schedule Assistant"],
+          ["Moein", "AI Risks Assistant"],
+          ["Hossein", "AI Optimization Assistant"],
         ]);
 
         const selectChatAgent = (chatAg, index) => {
@@ -1700,6 +1793,8 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
 
           displayName.textContent = agentName;
           displayUserStatus.textContent = agentStatus;
+
+          showAgentMessage(agentName);
         };
 
         const removeChatAgentActive = () => {
@@ -1712,17 +1807,61 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
           );
         });
 
+        // Show Default Message
+        showAgentMessage("Sara");
+
+        // Speed of Writting
         function typeWriter(el, text, speed) {
           let index = 0;
-          let interval = setInterval(() => {
-            el.text(el.text() + text.charAt(index));
-            index++;
-            scrollToBottom();
-            if (index >= text.length) {
-              clearInterval(interval);
+          el.html("");
+
+          function type() {
+            if (index < text.length) {
+              el.html(text.substring(0, index + 1));
+              index++;
+              scrollToBottom();
+              console.log(`Typing: ${text.charAt(index)}`);
+              typingInterval = setTimeout(type, speed);
+            } else {
+              clearInterval(typingInterval);
+              typingInterval = null;
+              $("#stopBtn").addClass("d-none");
             }
-          }, speed);
+          }
+
+          type();
         }
+
+        var jqXHR = null;
+        var typingInterval = null;
+        var isBusy = false;
+
+        $("#submitBtn").on("click", function (e) {
+          e.preventDefault();
+          sendMessage();
+        });
+
+        $("#sendChat").on("keypress", function (e) {
+          if (e.which === 13) {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+
+        $("#stopBtn").on("click", function (e) {
+          e.preventDefault();
+          if (jqXHR) {
+            jqXHR.abort();
+            hideLoader();
+          }
+          if (typingInterval) {
+            clearInterval(typingInterval);
+            typingInterval = null;
+          }
+          $("#submitBtn").prop("disabled", false);
+          $(this).addClass("d-none");
+          console.log("Request Abortet!");
+        });
 
         function sendMessage() {
           const message = $("#sendChat").val();
@@ -1732,86 +1871,79 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
             return;
           }
           function showLoader() {
+            const loaderText = `Okay, I'm working on it.Please Wait...`;
             $("#chats-list").append(`
-              <li class="chat-message loaderdiv">
-                          <div class="d-flex overflow-hidden">
-                            <div class="user-avatar flex-shrink-0 me-4 agent-online">
-                             <img src="${selectedAvatarSrc}" style="width: 35px; height: 38px;" alt="Avatar" class="rounded-circle" />
-                              <div class="avatar avatar-sm">
-                              </div>
-                            </div>                             
-                            <div class="chat-message-wrapper flex-grow-1">
-                              <div class="chat-message-text">
-                                <div class="loader">
-                                  <div></div>
-                                  <div></div>
-                                  <div></div>
-                              </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-              `);
+                  <li class="chat-message loaderdiv">
+        <div class="d-flex overflow-hidden">
+          <div class="user-avatar flex-shrink-0 me-4 agent-online">
+            <img src="${selectedAvatarSrc}" style="width: 35px; height: 38px;" alt="Avatar" class="rounded-circle" />
+          </div>
+          <div class="chat-message-wrapper flex-grow-1">
+            <div class="chat-message-text">
+              <span class="loader-text">${loaderText}</span>
+            </div>
+          </div>
+        </div>
+      </li>`);
             scrollToBottom();
             $("#sendChat").val("");
           }
 
           $("#stopBtn").removeClass("d-none");
 
-          $.ajax({
+          jqXHR = $.ajax({
             url: "CallChatService.php",
             type: "POST",
             data: { message: message },
             beforeSend: function () {
               // setting a timeout
               $("#chats-list").append(`
-                      <li class="chat-message chat-message-right">
-                          <div class="d-flex overflow-hidden">
-                            <div class="chat-message-wrapper flex-grow-1">
-                              <div class="chat-message-text">
-                                <p class="mb-0">${message}</p>
+                        <li class="chat-message chat-message-right">
+                            <div class="d-flex overflow-hidden">
+                              <div class="chat-message-wrapper flex-grow-1">
+                                <div class="chat-message-text">
+                                  <p class="mb-0">${message}</p>
+                                </div>
+                                <div class="text-end text-muted mt-1">
+                                  <i class="ti ti-checks ti-16px text-success me-1"></i>
+                                  <small> ${currentTime}</small>
+                                </div>
                               </div>
-                              <div class="text-end text-muted mt-1">
-                                <i class="ti ti-checks ti-16px text-success me-1"></i>
-                                <small> ${currentTime}</small>
+                              <div class="user-avatar flex-shrink-0 ms-4">
+                                <div class="avatar avatar-sm">
+                                  <img src="avatar.jpg" alt="Avatar" class="rounded-circle" />
+                                </div>
                               </div>
                             </div>
-                            <div class="user-avatar flex-shrink-0 ms-4">
-                              <div class="avatar avatar-sm">
-                                <img src="avatar.jpg" alt="Avatar" class="rounded-circle" />
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      `);
+                          </li>
+                        `);
               showLoader();
               scrollToBottom();
             },
 
             success: function (response) {
-              console.log(response);
               hideLoader();
-              $("#stopBtn").addClass("d-none");
+
               $("#submitBtn").prop("disabled", true);
 
               var chatMessage = $(`
-                  <li class="chat-message">
-                    <div class="d-flex overflow-hidden">
-                      <div class="user-avatar flex-shrink-0 me-4">
-                        <div class="avatar avatar-sm agent-online ">
-                          <img src="${selectedAvatarSrc}" style="width: 35px; height: 38px;" alt="Avatar" class="rounded-circle" />
+                    <li class="chat-message">
+                      <div class="d-flex overflow-hidden">
+                        <div class="user-avatar flex-shrink-0 me-4 agent-container">
+                          <div class="avatar avatar-sm agent-online ">
+                            <img src="${selectedAvatarSrc}" style="width: 35px; height: 38px;" alt="Avatar" class="rounded-circle" />
+                          </div>
+                        </div>
+                        <div class="chat-message-wrapper flex-grow-1">
+                          <div class="chat-message-text mt-2">
+                            <p class="mb-0"></p>
+                          </div>
+                          <div class="text-muted mt-1">
+                            <small>${currentUser}</small>
+                          </div>
                         </div>
                       </div>
-                      <div class="chat-message-wrapper flex-grow-1">
-                        <div class="chat-message-text mt-2">
-                          <p class="mb-0"></p>
-                        </div>
-                        <div class="text-muted mt-1">
-                          <small>${currentUser}</small>
-                        </div>
-                      </div>
-                    </div>
-                  </li>`);
+                    </li>`);
 
               $("#chats-list").append(chatMessage);
               scrollToBottom();
@@ -1828,10 +1960,9 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                 alert("مشکلی در ارسال پیام رخ داده است.");
               }
             },
-            complete: function() {
+            complete: function () {
               jqXHR = null;
-              $("#stopBtn").addClass("d-none");
-            }
+            },
           });
         }
 
@@ -1849,9 +1980,39 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
             }
           });
         });
-      });
 
-      // });
+        $("#searchBox").on("keydown", function (e) {
+          if (e.which === 13) {
+            e.preventDefault();
+            return false;
+          }
+        });
+
+        $("#sendChat").on("keypress", function (e) {
+          if (jqXHR !== null || typingInterval !== null) {
+            e.preventDefault();
+            return;
+          }
+
+          if (e.which === 13) {
+            if ($("#searchBox").is(":focus")) {
+              e.preventDefault();
+              return;
+            }
+            sendMessage();
+          }
+        });
+
+        $("#stopBtn").on("click", function (e) {
+          e.preventDefault();
+          $("#sendChat").on("keypress", function (e) {
+            if (e.which === 13) {
+              e.preventDefault();
+              return;
+            }
+          });
+        });
+      });
     </script>
     <!-- Page JS -->
     <script src="assets/js/app-chat.js"></script>
