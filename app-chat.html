@@ -387,7 +387,7 @@
               </div>
 
               <style>
-                .nav-item{
+                .nav-item {
                   cursor: pointer;
                 }
               </style>
@@ -1206,7 +1206,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                   <!-- /Sidebar Left-->
 
                   <!-- Chat & Contacts -->
-                  <div
+                  <!-- <div
                     class="col app-chat-contacts app-sidebar flex-grow-0 overflow-hidden border-end"
                     id="app-chat-contacts"
                   >
@@ -1249,7 +1249,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                       ></i>
                     </div>
                     <div class="sidebar-body">
-                      <!-- Chats -->
+                      
                       <ul class="list-unstyled chat-contact-list py-2 mb-0">
                         <li
                           class="chat-contact-list-item chat-contact-list-item-title mt-0"
@@ -1398,9 +1398,8 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                           </a>
                         </li>
                       </ul>
-                      <!-- Contacts -->
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /Chat contacts -->
 
                   <!-- Chat History -->
@@ -1413,12 +1412,12 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                           <div
                             class="d-flex overflow-hidden align-items-center agent-container"
                           >
-                            <i
+                            <!-- <i
                               class="ti ti-menu-2 ti-lg cursor-pointer d-lg-none d-block me-4"
                               data-bs-toggle="sidebar"
                               data-overlay
                               data-target="#app-chat-contacts"
-                            ></i>
+                            ></i> -->
                             <div
                               class="flex-shrink-0 avatar avatar-online agent-online"
                             >
@@ -1449,7 +1448,38 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                             <i
                               class="ti ti-search ti-md cursor-pointer d-sm-inline-flex d-none me-1 btn btn-sm btn-text-secondary text-secondary btn-icon rounded-pill"
                             ></i>
-                            <div class="dropdown">
+                            <style>
+                              .ti-help-square-rounded {
+                                font-size: 2.4rem;
+                                animation: flashColor 4s infinite;
+                                cursor: pointer;
+                              }
+
+                              @keyframes flashColor {
+                                0%,
+                                100% {
+                                  color: #fff;
+                                }
+                                50% {
+                                  color: #7367f0;
+                                }
+                              }
+                            </style>
+
+                            <div
+                              class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"
+                            >
+                              <a
+                                class="nav-item nav-link px-0 me-xl-4"
+                                href="javascript:void(0)"
+                              >
+                                <i
+                                  class="ti ti-help-square-rounded d-block d-xl-none ti-md align-middle"
+                                ></i>
+                              </a>
+                            </div>
+
+                            <!-- <div class="dropdown">
                               <button
                                 class="btn btn-sm btn-icon btn-text-secondary text-secondary rounded-pill dropdown-toggle hide-arrow"
                                 data-bs-toggle="dropdown"
@@ -1488,7 +1518,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                   >Report</a
                                 >
                               </div>
-                            </div>
+                            </div> -->
                           </div>
                         </div>
                       </div>
