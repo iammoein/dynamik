@@ -133,7 +133,7 @@
             <!-- Menu -->
             <div class="col">
               <aside
-                id="layout-menu"
+                id="layout-menu-right"
                 class="layout-menu menu-vertical menu bg-menu-theme"
               >
                 <div class="app-brand demo">
@@ -1523,7 +1523,8 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                   class="ti ti-search ti-md cursor-pointer d-sm-inline-flex d-none me-1 btn btn-sm btn-text-secondary text-secondary btn-icon rounded-pill"
                                 ></i>
                                 <style>
-                                  .ti-help-square-rounded {
+                                  #toggle-left-menu,
+                                  #toggle-right-menu {
                                     font-size: 1.8rem !important;
                                     animation: flashColor 2s infinite;
                                     cursor: pointer;
@@ -1545,14 +1546,61 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                   class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"
                                 >
                                   <a
-                                    class="nav-item nav-link px-0 me-xl-4"
-                                    href="javascript:void(0)"
+                                    class="nav-item nav-link px-0 me-xl-4 d-flex gap-2"
                                   >
                                     <i
-                                      class="ti ti-help-square-rounded d-block d-xl-none align-middle"
+                                      class="ti ti-layout-sidebar-left-collapse"
+                                      id="toggle-left-menu"
+                                    ></i>
+                                    <i
+                                      class="ti ti-layout-sidebar-right-collapse"
+                                      id="toggle-right-menu"
                                     ></i>
                                   </a>
                                 </div>
+
+                                <script>
+                                  document.addEventListener(
+                                    "DOMContentLoaded",
+                                    function () {
+                                      const toggleLeft =
+                                        document.getElementById(
+                                          "toggle-left-menu"
+                                        );
+                                      const toggleRight =
+                                        document.getElementById(
+                                          "toggle-right-menu"
+                                        );
+                                      const leftMenu =
+                                        document.getElementById(
+                                          "layout-menu-left"
+                                        );
+                                      const rightMenu =
+                                        document.getElementById(
+                                          "layout-menu-right"
+                                        );
+
+                                      // رویداد کلیک برای منوی سمت چپ
+                                      toggleLeft.addEventListener(
+                                        "click",
+                                        function (e) {
+                                          e.preventDefault();
+                                          leftMenu.classList.toggle("active");
+                                          console.log("hi");
+                                        }
+                                      );
+
+                                      // رویداد کلیک برای منوی سمت راست
+                                      toggleRight.addEventListener(
+                                        "click",
+                                        function (e) {
+                                          e.preventDefault();
+                                          rightMenu.classList.toggle("active");
+                                        }
+                                      );
+                                    }
+                                  );
+                                </script>
 
                                 <!-- <div class="dropdown">
                               <button
