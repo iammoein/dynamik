@@ -147,10 +147,9 @@
                   </a>
 
                   <a
-                    href="javascript:void(0);"
-                    class="layout-menu-toggle menu-link text-large ms-auto"
+                    class="layout-menu-toggle menu-link text-large ms-auto close-sidebar"
                   >
-                    <i class="ti ti-x d-block d-xl-none ti-md align-middle close-sidebar"></i>
+                    <i class="ti ti-x d-block d-xl-none ti-md align-middle"></i>
                   </a>
                 </div>
 
@@ -1586,7 +1585,6 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
 
                                   #layout-menu-left {
                                     left: 0 !important;
-                                    
                                   }
 
                                   #layout-menu-right {
@@ -1609,8 +1607,11 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                     #layout-menu-left,
                                     #layout-menu-right {
                                       display: block !important;
-                                      transform: translate3d(0, 0, 0) !important;
-                                      
+                                      transform: translate3d(
+                                        0,
+                                        0,
+                                        0
+                                      ) !important;
                                     }
                                   }
                                 </style>
@@ -1641,32 +1642,6 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                                     ></i>
                                   </a>
                                 </div>
-
-                                <script>
-                                  document
-                                    .getElementById("toggle-left-menu")
-                                    .addEventListener("click", function () {
-                                      const leftMenu =
-                                        document.getElementById(
-                                          "layout-menu-left"
-                                        );
-                                      leftMenu.classList.toggle("active");
-                                    });
-
-                                  document
-                                    .getElementById("toggle-right-menu")
-                                    .addEventListener("click", function () {
-                                      const rightMenu =
-                                        document.getElementById(
-                                          "layout-menu-right"
-                                        );
-                                      rightMenu.classList.toggle("active");
-                                    });
-
-                                    document.querySelectorAll('.close-sidebar').addEventListener('click', () => {
-                                      
-                                    })
-                                </script>
 
                                 <!-- <div class="dropdown">
                               <button
@@ -1791,7 +1766,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                           <h5 class="mt-4 mb-0">Felecia Rower</h5>
                           <span>NextJS Developer</span>
                           <i
-                            class="ti ti-x ti-lg cursor-pointer  d-block"
+                            class="ti ti-x ti-lg cursor-pointer d-block"
                             data-bs-toggle="sidebar"
                             data-overlay
                             data-target="#app-chat-sidebar-right"
@@ -1929,10 +1904,9 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                   </a>
 
                   <a
-                    href="javascript:void(0);"
-                    class="layout-menu-toggle menu-link text-large ms-auto"
+                    class="layout-menu-toggle menu-link text-large ms-auto close-sidebar"
                   >
-                    <i class="ti ti-x d-block d-xl-none ti-md align-middle close-sidebar"></i>
+                    <i class="ti ti-x d-block d-xl-none ti-md align-middle"></i>
                   </a>
                 </div>
                 <div class="accordion" id="accordionExample">
@@ -2065,6 +2039,39 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
                     font-size: 1.2rem;
                   }
                 </style>
+
+                <script>
+                  document
+                    .getElementById("toggle-left-menu")
+                    .addEventListener("click", function () {
+                      const leftMenu =
+                        document.getElementById("layout-menu-left");
+                      leftMenu.classList.toggle("active");
+                    });
+
+                  document
+                    .getElementById("toggle-right-menu")
+                    .addEventListener("click", function () {
+                      const rightMenu =
+                        document.getElementById("layout-menu-right");
+                      rightMenu.classList.toggle("active");
+                    });
+
+                  document
+                    .querySelectorAll(".close-sidebar")
+                    .forEach((closeBtn) => {
+                      closeBtn.addEventListener("click", () => {
+                        console.log(closeBtn);
+                        const leftMenu =
+                          document.getElementById("layout-menu-left");
+                        const rightMenu =
+                          document.getElementById("layout-menu-right");
+
+                        if (leftMenu) leftMenu.classList.remove("active");
+                        if (rightMenu) rightMenu.classList.remove("active");
+                      });
+                    });
+                </script>
               </aside>
             </div>
           </div>
@@ -2072,7 +2079,7 @@ Hey there, we’re just writing to let you know that you’ve been subscribed to
       </div>
 
       <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- <div class="layout-overlay layout-menu-toggle"></div> -->
 
       <!-- Drag Target Area To SlideIn Menu On Small Screens -->
       <div class="drag-target"></div>
