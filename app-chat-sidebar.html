@@ -212,10 +212,6 @@
                 </script>
 
                 <style>
-                  aside {
-                    height: 100vh;
-                  }
-
                   .app-brand {
                     padding: 0.6rem;
                   }
@@ -389,32 +385,6 @@
                   .circular-menu.circular-menu-left.active
                     .menu-item:nth-child(4) {
                     transform: translate3d(5rem, 0.7rem, 0);
-                  }
-
-                  /* تنظیمات مخصوص موبایل */
-                  @media (max-width: 768px) {
-                    /* حذف ارتفاع ثابت تا محتوا به صورت طبیعی نمایش داده شود */
-                    aside {
-                      height: auto;
-                      overflow-y: hidden;
-                    }
-
-                    /* کاهش اندازه منو دایره‌ای برای تناسب بهتر */
-                    .circular-menu {
-                      bottom: 1rem;
-                      left: 1rem; /* قرار دادن منو در گوشه سمت چپ */
-                      transform: scale(0.8);
-                    }
-
-                    /* در صورت نیاز، فاصله‌های داخلی و حاشیه‌ها را هم تنظیم کنید */
-                    .menu-inner {
-                      padding: 0.5rem;
-                    }
-
-                    .glass-box {
-                      padding: 15px;
-                      margin: 0.5rem;
-                    }
                   }
                 </style>
               </aside>
